@@ -11,22 +11,37 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     public float gravityScale;
 
+    private bool superJumpUsed;
+   
     void Start()
     {
         controller = GetComponent<CharacterController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
+ 	
+        //moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
+        float odlY = moveDirection.y;
+        moveDirection = transform.forward * moveSpeed * Input.GetAxis("Vertical");// new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
+        moveDirection.y = odlY;
 
-        if (controller.isGrounded && Input.GetButtonDown("Jump"))
-        {
-            moveDirection.y = jumpForce;
-        }
+		if(controller.isGrounded) 
+		{
+			moveDirection.y = 0f;
+	        if ( Input.GetButtonDown("Jump"))
+    	    {
+        	    moveDirection.y = jumpForce;
+        	} 	
+    	} 
+	    moveDirection.y = moveDirection.y + Physics.gravity.y * gravityScale;
+	    
+    	controller.Move(moveDirection * Time.deltaTime);
 
-        moveDirection.y = moveDirection.y + Physics.gravity.y * gravityScale;
-        controller.Move(moveDirection * Time.deltaTime);
-
+    	//if(Input.GetButtonDown("Fire1")) {
+    	transform.Rotate(0,Input.GetAxis("Horizontal")*moveSpeed,0);
+    	//}
     }
+
+
 }
