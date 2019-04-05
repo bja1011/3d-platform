@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
 
         float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
@@ -39,6 +39,10 @@ public class CameraController : MonoBehaviour
 
     	//transform.position = target.transform.position - offset;
         //transform.LookAt(new Vector3(target.transform.position.x,0f,target.transform.position.z));
+
+        if(transform.position.y < target.transform.position.y) {
+            transform.position = new Vector3(transform.position.x,target.transform.position.y - 0.5f,transform.position.z);            
+        }
         transform.LookAt(target.transform);
     }
 }
