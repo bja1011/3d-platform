@@ -6,12 +6,17 @@ public class CameraController : MonoBehaviour
 {
     public GameObject target;
 	public Vector3 offset;
+    public bool useOffset;
     public float rotateSpeed = 5;
     public Transform pivot;
+    public float maxCameraAngle = 60f;
+    public float minCameraAngle = -60f;
 
     void Start()
     {
-        offset = target.transform.position - transform.position;
+        if(!useOffset) {
+            offset = target.transform.position - transform.position;
+        }
 
         pivot.position = target.transform.position;
         pivot.parent = target.transform;
@@ -29,6 +34,13 @@ public class CameraController : MonoBehaviour
         target.transform.Rotate(0, horizontal, 0);
         pivot.Rotate(-vertical, 0, 0);
 
+        if(pivot.rotation.eulerAngles.x > maxCameraAngle && pivot.rotation.eulerAngles.x < 180f) {
+            pivot.rotation = Quaternion.Euler(maxCameraAngle, 0, 0);
+        }
+        //Debug.Log(pivot.rotation.eulerAngles.x);
+        if(pivot.rotation.eulerAngles.x > 180 && pivot.rotation.eulerAngles.x < 360f + minCameraAngle) {
+            pivot.rotation = Quaternion.Euler(360f + minCameraAngle, 0, 0);
+        }
 
         float desiredYAngle = target.transform.eulerAngles.y;
         float desiredXAngle = pivot.eulerAngles.x;
