@@ -12,6 +12,9 @@ public class PlayerController2 : MonoBehaviour
     private CharacterController controller;
     public float gravityScale;
 
+    public Transform pivot;
+    public float rotateSpeed = 1;
+
     public Animator anim;
 
     private bool superJumpUsed;
@@ -39,6 +42,12 @@ public class PlayerController2 : MonoBehaviour
 
         moveDirection.y = moveDirection.y + Physics.gravity.y * gravityScale * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
+        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            transform.rotation = Quaternion.Euler(0, pivot.rotation.eulerAngles.y, 0);
+        }
+
 
         anim.SetBool("isGrounded", controller.isGrounded);
         anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical"))) + (Mathf.Abs(Input.GetAxis("Horizontal"))));
