@@ -12,6 +12,8 @@ public class PlayerController2 : MonoBehaviour
     private CharacterController controller;
     public float gravityScale;
 
+    public Animator anim;
+
     private bool superJumpUsed;
 
     void Start()
@@ -37,5 +39,8 @@ public class PlayerController2 : MonoBehaviour
 
         moveDirection.y = moveDirection.y + Physics.gravity.y * gravityScale * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
+        anim.SetBool("isGrounded", controller.isGrounded);
+        anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical"))) + (Mathf.Abs(Input.GetAxis("Horizontal"))));
     }
 }
