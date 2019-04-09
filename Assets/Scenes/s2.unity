@@ -310,7 +310,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh32838
+  m_Name: pb_Mesh17402
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -467,6 +467,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &333479421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 529891a3e61cbc040b64d23184f9bda5,
+    type: 3}
+  m_PrefabInstance: {fileID: 732814812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &601870450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -578,7 +584,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh71730
+  m_Name: pb_Mesh17494
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -899,7 +905,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh71304
+  m_Name: pb_Mesh17424
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5474,8 +5480,9 @@ MonoBehaviour:
   jumpForce: 20
   turnSpeed: 5
   gravityScale: 5
+  playerModel: {fileID: 333479421}
   pivot: {fileID: 1609324625}
-  rotateSpeed: 1
+  rotateSpeed: 10
   anim: {fileID: 1341836254}
 --- !u!23 &1475288440
 MeshRenderer:
@@ -5549,13 +5556,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 1.02
   m_Radius: 0.5
   m_SlopeLimit: 150
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.32, z: -0.27}
 --- !u!1 &1593151193
 GameObject:
   m_ObjectHideFlags: 0
