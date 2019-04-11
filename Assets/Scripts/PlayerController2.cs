@@ -46,7 +46,7 @@ public class PlayerController2 : MonoBehaviour
 
         if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            transform.rotation = Quaternion.Euler(0, pivot.rotation.eulerAngles.y, 0);
+            transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
             Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
             if (newRotation.eulerAngles != Vector3.zero)
             {
